@@ -45,14 +45,6 @@ Return the result table in **any order**.
 
 ---
 
-## Explanation
-
-- Product `1`: last change **on or before** `'2019-08-16'` → price is **35**
-- Product `2`: last change before `'2019-08-17'` is on `'2019-08-14'` → price is **50**
-- Product `3`: no price change **before or on** `'2019-08-16'` → default price is **10**
-
----
-
 ## SQL Query
 
 ```sql
