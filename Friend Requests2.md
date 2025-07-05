@@ -1,4 +1,4 @@
-# 40. Who Has the Most Friends
+# 41. Who Has the Most Friends
 
 **Difficulty:** Medium  
 **Topic:** Aggregation, UNION  
