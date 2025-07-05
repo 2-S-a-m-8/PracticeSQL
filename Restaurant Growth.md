@@ -1,4 +1,4 @@
-# 39. Restaurant Growth
+# 40. Restaurant Growth
 
 **Difficulty:** Medium  
 **Topic:** Window Functions, Aggregation  
