@@ -1,0 +1,69 @@
+# 44. Patients With a Condition
+
+## Problem Statement
+
+Given a table `Patients` with patient information and a space-separated string of condition codes in the `conditions` column, write an SQL query to retrieve the `patient_id`, `patient_name`, and `conditions` **only for patients diagnosed with Type I Diabetes**.
+
+A Type I Diabetes condition **always starts with the prefix `DIAB1`**.
+
+### Table: Patients
+
+| Column Name  | Type    |
+|--------------|---------|
+| patient_id   | int     |
+| patient_name | varchar |
+| conditions   | varchar |
+
+- `patient_id` is the primary key.
+- The `conditions` column may contain 0 or more condition codes separated by a space (`' '`).
+- An empty string `''` means the patient has no conditions.
+
+---
+
+## SQL Solution
+
+```sql
+SELECT patient_id, patient_name, conditions
+FROM Patients
+WHERE conditions LIKE 'DIAB1%'        -- DIAB1 at the beginning
+   OR conditions LIKE '% DIAB1%';     -- DIAB1 in the middle or end, with a space before
+```
+
+---
+
+## Explanation
+
+The key detail is: **Type I Diabetes codes always begin with `DIAB1`**, so we look for any occurrence of a word starting with `DIAB1` in the `conditions` column.
+
+- `conditions LIKE 'DIAB1%'`: Matches if the condition string **starts** with a `DIAB1` code.  
+  E.g., `'DIAB100 MYOP'`
+
+- `conditions LIKE '% DIAB1%'`: Matches if `DIAB1` appears **after a space** in the string (i.e., **middle or end** of the condition list).  
+  E.g., `'ACNE DIAB100'`
+
+We don't need to match `LIKE '%DIAB1%'` in general because it would also match other prefixes like `DIAB201`, which are **not** Type I Diabetes.
+
+---
+
+## Example
+
+### Input
+
+| patient_id | patient_name | conditions   |
+|------------|--------------|--------------|
+| 1          | Daniel       | YFEV COUGH   |
+| 2          | Alice        |              |
+| 3          | Bob          | DIAB100 MYOP |
+| 4          | George       | ACNE DIAB100 |
+| 5          | Alain        | DIAB201      |
+
+### Output
+
+| patient_id | patient_name | conditions   |
+|------------|--------------|--------------|
+| 3          | Bob          | DIAB100 MYOP |
+| 4          | George       | ACNE DIAB100 |
+
+---
+
+
