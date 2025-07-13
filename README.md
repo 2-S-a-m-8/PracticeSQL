@@ -1,4 +1,4 @@
-# 📘 PracticeSQL
+# SQL101
 
 **PracticeSQL** is a curated collection of SQL questions with clean, interview-ready solutions and detailed explanations. It’s built for aspiring data professionals who want to sharpen their SQL skills through real-world problems and hands-on learning.
 
